@@ -1,0 +1,152 @@
+[
+  {
+    "model": "rango.category",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "views": 128,
+      "likes": 53,
+      "slug": "python"
+    }
+  },
+  {
+    "model": "rango.category",
+    "pk": 2,
+    "fields": {
+      "name": "Django",
+      "views": 256,
+      "likes": 78,
+      "slug": "django"
+    }
+  },
+  {
+    "model": "rango.category",
+    "pk": 3,
+    "fields": {
+      "name": "Other Frameworks",
+      "views": 56,
+      "likes": 12,
+      "slug": "other-frameworks"
+    }
+  },
+  {
+    "model": "rango.category",
+    "pk": 4,
+    "fields": {
+      "name": "Django Auth",
+      "views": 124,
+      "likes": 36,
+      "slug": "django-auth"
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "title": "Official Python Tutorial",
+      "url": "http://docs.python.org/2/tutorial/",
+      "views": 10
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "title": "How to Think like a Computer Scientist",
+      "url": "http://www.greenteapress.com/thinkpython/",
+      "views": 5
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "title": "Learn Python in 10 Minutes",
+      "url": "http://www.korokithakis.net/tutorials/python/",
+      "views": 23
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "title": "Official Django Tutorial",
+      "url": "https://docs.djangoproject.com/en/1.9/intro/tutorial01/",
+      "views": 30
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "title": "Django Rocks",
+      "url": "http://www.djangorocks.com/",
+      "views": 7
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "title": "How to Tango with Django",
+      "url": "http://www.tangowithdjango.com/",
+      "views": 40
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 7,
+    "fields": {
+      "category": 3,
+      "title": "Bottle",
+      "url": "http://bottlepy.org/docs/dev/",
+      "views": 0
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 8,
+    "fields": {
+      "category": 3,
+      "title": "Flask",
+      "url": "http://flask.pocoo.org",
+      "views": 9
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 9,
+    "fields": {
+      "category": 4,
+      "title": "Django Documentation Page Auth",
+      "url": "https://docs.djangoproject.com/fr/1.11/topics/auth/",
+      "views": 21
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 10,
+    "fields": {
+      "category": 4,
+      "title": "django.contrib.auth",
+      "url": "https://docs.djangoproject.com/fr/1.11/ref/contrib/auth/",
+      "views": 38
+    }
+  },
+  {
+    "model": "rango.page",
+    "pk": 11,
+    "fields": {
+      "category": 4,
+      "title": "MDN Tutorial Part 8",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication",
+      "views": 83
+    }
+  }
+]

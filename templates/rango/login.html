@@ -1,0 +1,33 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Login to Rango{% endblock %}
+
+{% block links %}
+    <li><a href="{% url 'rango:index' %}">Home</a></li>
+    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
+{% endblock %}
+
+{% block content %}
+    {% if errors %}
+        <div>
+            {% for error in errors %}
+                <div class="panel panel-danger">
+                    <div class="panel-body">{{ error }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <form class="form-group" id="login_form" method="post" action="{% url 'rango:login' %}">
+        {% csrf_token %}
+        <label id="username_label">Username: </label>
+        <br/>
+        <input class="form-control" aria-labelledby="username_label" type="text" name="username" value="" size="50"  title="Username"/>
+        <br />
+        <label>Password: </label><br/>
+        <input class="form-control" aria-labelledby="password_label"  type="password" name="password" value="" size="50" title="password" />
+        <br />
+        <input class="btn btn-default" type="submit" value="submit" />
+    </form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Register for Rango{% endblock %}
+
+{% block links %}
+    <li><a href="{% url 'rango:index' %}">Home</a></li>
+    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
+{% endblock %}
+
+{% block content %}
+    {% if registered %}
+        <p>Rango says : <strong>thank you for registering !</strong></p>
+        <p>Return to the <a href="{% url 'rango:index' %}">home page</a></p>
+    {% else %}
+        <p>Rango says : <strong>register here !</strong></p>
+        <form class="form-group" id="user_form" action="{% url 'rango:register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-xs-12">
+                {% for visible_field in user_form.visible_fields %}
+                    <p>{{ visible_field.label }}</p>
+                    <p>{{ visible_field.help_text }}</p>
+                    <p>{{ visible_field }}</p>
+                    <p>{{ visible_field.errors }}</p>
+                {% endfor %}
+                {% for visible_field in profile_form.visible_fields %}
+                    <p>{{ visible_field.label }}</p>
+                    <p>{{ visible_field.help_text }}</p>
+                    <p>{{ visible_field }}</p>
+                    <p>{{ visible_field.errors }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12 text-center">
+                <input class="btn btn-default" type="submit" name="submit" value="Register" />
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
