@@ -1,13 +1,9 @@
 {% extends 'rango/base.html' %}
 
 {% load staticfiles %}
+{% load bootstrap_toolkit %}
 
 {% block title %}Add a Category{% endblock %}
-
-{% block links %}
-    <li><a href="{% url 'rango:index' %}">Home</a></li>
-    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
-{% endblock %}
 
 {% block content %}
     <form id="category_form" action="{% url 'rango:add_category' %}" method="post">
@@ -24,8 +20,8 @@
                 <p>{{ visible_field }}</p>
             {% endfor %}
         </div>
-        <div class="col-xs-12 text-center">
-            <input type="submit" name="submit" value="Create Category" />
+        <div class="col-xs-12">
+            <input class="btn btn-default" type="submit" name="submit" value="Create Category" />
         </div>
     </form>
 {% endblock %}

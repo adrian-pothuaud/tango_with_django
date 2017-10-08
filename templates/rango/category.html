@@ -11,10 +11,7 @@
 {% endblock %}
 
 {% block links %}
-    <li><a href="{% url 'rango:index' %}">Home</a></li>
-    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
     {% if user.is_authenticated %}
-        <li><a href="{% url 'rango:add_category' %}">New Category</a></li>
         <li><a href="{% url 'rango:add_page' category_slug_name=category.slug %}">Add a Page</a></li>
     {% endif %}
 {% endblock %}
@@ -26,7 +23,7 @@
             <div class="col-xs-12"></div>
             <ul class="list-unstyled">
                 {% for page in pages %}
-                    <li><a href="{{ page.url}}">{{ page.title }}</a></li>
+                    <li><a href="{% url 'rango:goto' page.id %}">{{ page.title }}</a></li>
                 {% endfor %}
             </ul>
         {% else %}

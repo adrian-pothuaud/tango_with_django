@@ -1,0 +1,16 @@
+{% extends "rango/base.html" %}
+{% block title %}Register for Rango{% endblock %}
+{% block links %}
+    <li><a href="{% url 'rango:index' %}">Home</a></li>
+    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
+{% endblock %}
+{% load bootstrap_toolkit %}
+
+
+{% block content %}
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <input class="btn btn-default" type="submit" value="Submit" />
+    </form>
+{% endblock %}

@@ -1,45 +1,106 @@
-from django.contrib.auth import authenticate, login as auth_login, logout
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from datetime import datetime
 
-from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
-from .models import Category, Page
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404, redirect
+
+from rango.forms import CategoryForm, PageForm
+from rango.webhose_search import run_query
 from .constants import integer_default_views_and_likes
+from .models import Category, Page
+
+
+# A helper method
+def get_server_side_cookie(request, cookie, default_val=None):
+    val = request.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+
+
+def visitor_cookie_handler(request):
+    visits = int(get_server_side_cookie(request, 'visits', '1'))
+    last_visit_cookie = get_server_side_cookie(request,
+                                               'last_visit',
+                                               str(datetime.now()))
+    last_visit_time = datetime.strptime(last_visit_cookie[:-7],
+                                        '%Y-%m-%d %H:%M:%S')
+
+    # If it's been more than a day since the last visit...
+    if (datetime.now() - last_visit_time).days > 0:
+        visits = visits + 1
+        # Update the last visit cookie now that we have updated the count
+        request.session['last_visit'] = str(datetime.now())
+    else:
+        visits = 1
+        # Set the last visit cookie
+        request.session['last_visit'] = last_visit_cookie
+
+    # Update/set the visits cookie
+    request.session['visits'] = visits
 
 
 def index(request):
+    # test cookies
+    request.session.set_test_cookie()
     # get top 5 categories
     top_categories = Category.objects.order_by('-likes')[:5]
     top_pages = Page.objects.order_by('-views')[:5]
+    visitor_cookie_handler(request)
     # dictionary to pass to the template
-    context_dir = {'boldmessage': 'Hello from Rango !',
-                   'top_categories': top_categories,
-                   'top_pages': top_pages, }
+    context_dict = {'boldmessage': 'Hello from Rango !',
+                    'top_categories': top_categories,
+                    'top_pages': top_pages,
+                    'visits': request.session['visits']}
 
-    # return a rendered response to the client
-    return render(request, 'rango/index.html', context=context_dir)
+    # get response early to set cookies
+    return render(request, 'rango/index.html', context=context_dict)
 
 
 def about(request):
+    # test cookies
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
     # dictionary to pass to the template
-    context_dir = {'boldmessage': 'Hello from About Rango !'}
+    context_dict = {'boldmessage': 'Hello from About Rango !'}
+
+    visitor_cookie_handler(request)
+    count = request.session.get('visits', 0)
+    context_dict['visit_count'] = count
 
     # return a rendered response to the client
-    return render(request, 'rango/about.html', context=context_dir)
+    return render(request, 'rango/about.html', context=context_dict)
 
 
 def show_category(request, category_name_slug):
     # dictionary to pass to the template
-    context_dir = dict()
+    context_dict = dict()
     category = get_object_or_404(Category, slug=category_name_slug)
     pages = Page.objects.filter(category=category)
-    context_dir['category'] = category
-    context_dir['pages'] = pages
-    return render(request, 'rango/category.html', context=context_dir)
+    context_dict['category'] = category
+    context_dict['pages'] = pages
+    return render(request, 'rango/category.html', context=context_dict)
 
 
+def search(request):
+    result_list = []
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
+        if query:
+            # Run our Webhose search function to get the results list!
+            result_list = run_query(query)
+    return render(request, 'rango/search.html', {'result_list': result_list,
+                                                 'query': query, })
+
+
+def track_url(request, page_id):
+    page = get_object_or_404(Page, pk=page_id)
+    page.views += 1
+    page.save()
+    return redirect(page.url)
+
+
+"""
 def register(request):
     registered = False
 
@@ -66,7 +127,7 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render(request, 'rango/register.html', {
+    return render(request, 'rango/unused_register.html', {
         'user_form': user_form,
         'profile_form': profile_form,
         'registered': registered
@@ -94,7 +155,14 @@ def user_login(request):
             errors = dict()
         errors['invalid login'] = "Invalid login details"
     # GET
-    return render(request, 'rango/login.html', {'errors': errors})
+    return render(request, 'rango/unused_login.html', {'errors': errors})
+    
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('rango:index'))
+
+"""
 
 
 @login_required
@@ -134,11 +202,5 @@ def add_page(request, category_slug_name):
 
         print(form.errors)
 
-    context_dic = {'form': form, 'category': category}
-    return render(request, 'rango/add_page.html', context=context_dic)
-
-
-@login_required
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect(reverse('rango:index'))
+    context_dict = {'form': form, 'category': category}
+    return render(request, 'rango/add_page.html', context=context_dict)

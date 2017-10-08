@@ -19,9 +19,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from rango import views as rango_views, urls as rango_urls
+from registration.backends.simple.views import RegistrationView
 
-urlpatterns = [
-    url(r'^$', rango_views.index, name='index'),
-    url(r'^rango/', include(rango_urls)),
-    url(r'^admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Create a new class that redirects the user to the index page,
+# if successful at logging
+class MyRegistrationView(RegistrationView):
+    @staticmethod
+    def get_success_url():
+        return '/rango/'
+
+
+urlpatterns = [url(r'^$', rango_views.index, name='index'),
+               url(r'^rango/', include(rango_urls)),
+               url(r'^admin/', admin.site.urls),
+               url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+               url(r'^accounts/', include('registration.backends.simple.urls')),
+               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,14 +4,10 @@
 
 {% block title %}Rango says...{% endblock %}
 
-{% block links %}
-    <li><a href="{% url 'rango:about' %}">About</a></li>
-{% endblock %}
-
 {% block content %}
     <div>
         {% if user.is_authenticated %}
-            howdy {{ user.username }}!
+            <strong>Howdy</strong> <i>{{ user.username }}</i> !
         {% else %}
             hey there partner!
         {% endif %}
@@ -37,5 +33,11 @@
         <strong>There are no pages present.</strong>
     {% endif %}
     <img class="img-responsive img-resized" src="{% static "img/rango.jpg" %}" alt="Picture of Rango" />
+    <hr/>
+    <div class="container-fluid">
+        <div class="container">
+            <p>Rango got {{ visits }} visit{{ visits|pluralize:",s" }} :)</p>
+        </div>
+    </div>
 {% endblock %}
 

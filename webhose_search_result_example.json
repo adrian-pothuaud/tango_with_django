@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "thread": {
+        "uuid": "0eea176c709ad229d57430df9933b2dff7cbfa3c",
+        "url": "http://omgili.com/ri/8HG_hanVOKwSN2iCkqRhxp91EJXqDUz.s_4UrRpslV5uXagJZiqeJ76bUrl0ybwfy6hpMNG1BwC5MQX0UIrvErRDdicdZvfe",
+        "site_full": "people.com",
+        "site": "people.com",
+        "site_section": "http://people.com/feed",
+        "site_categories": [
+          "celebrity_fan_gossip",
+          "entertainment"
+        ],
+        "section_title": "PEOPLE.com",
+        "title": "Ashley Judd and Multiple Women Accuse Movie Mogul Harvey Weinstein of Sexual Harassment as He Announces Leave of Absence",
+        "title_full": "Ashley Judd and Multiple Women Accuse Movie Mogul Harvey Weinstein of Sexual Harassment as He Announces Leave of Absence",
+        "published": "2017-10-05T22:02:00.000+03:00",
+        "replies_count": 0,
+        "participants_count": 1,
+        "site_type": "news",
+        "country": "US",
+        "spam_score": 0.0,
+        "main_image": "http://peopledotcom.files.wordpress.com/2017/10/harvey-weinstein.jpg?crop\u003d59px%2C16px%2C1295px%2C680px\u0026amp;resize\u003d1200%2C630",
+        "performance_score": 10,
+        "domain_rank": 631,
+        "social": {
+          "facebook": {
+            "likes": 1116,
+            "comments": 20,
+            "shares": 1116
+          },
+          "gplus": {
+            "shares": 0
+          },
+          "pinterest": {
+            "shares": 1
+          },
+          "linkedin": {
+            "shares": 0
+          },
+          "stumbledupon": {
+            "shares": 0
+          },
+          "vk": {
+            "shares": 0
+          }
+        }
+      },
+      "uuid": "0eea176c709ad229d57430df9933b2dff7cbfa3c",
+      "url": "http://omgili.com/ri/8HG_hanVOKwSN2iCkqRhxp91EJXqDUz.s_4UrRpslV5uXagJZiqeJ76bUrl0ybwfy6hpMNG1BwC5MQX0UIrvErRDdicdZvfe",
+      "ord_in_thread": 0,
+      "author": "Jodi Guglielmi",
+      "published": "2017-10-05T22:02:00.000+03:00",
+      "title": "Ashley Judd and Multiple Women Accuse Movie Mogul Harvey Weinstein of Sexual Harassment as He Announces Leave of Absence",
+      "text": "Email \n\nPowerhouse film executive Harvey Weinstein has been accused of multiple cases of sexual harassment — including by actress Ashley Judd — spanning three decades. \nIn a revealing expose by The New York Times Thursday, eight women have come forward to speak out against Weinstein. \nFollowing the allegations, the movie mogul announced plans to take a “leave of absence” in a statement to the NYT . \n“I appreciate the way I’ve behaved with colleagues in the past has caused a lot of pain, and I sincerely apologize for it. Though I’m trying to do better, I know I have a long way to go,” he said, adding that he was working with therapists and planned to take time off to “ deal with this issue head-on.” \nWeinstein’s attorney, Lisa Bloom, said in a statement that “he denies many of the accusations as patently false.” Another attorney for Weinstein, Charles Harder, said the mogul is preparing a lawsuit against the NYT for“false and defamatory” statements. \nAccording to the NYT , Weinstein has reached at least eight settlements with women, including actress Rose McGowan. In their claims, they allege that Weinstein behaved inappropriately during work meetings. \n“I said no, a lot of ways, a lot of times, and he always came back at me with some new ask,” Judd told the NYT . “It was all this bargaining, this coercive bargaining.” CJ Rivera/Getty \nJudd claims Weinstein showed up to their business meeting at a Los Angeles hotel wearing a bathrobe and later asked her to watch him shower. “How do I get out of the room as fast as possible without alienating Harvey Weinstein?” Judd continued. \nShe recalled feeling “panicky, trapped.” \n“There’s a lot on the line, the cachet that came with Miramax,” she said. \nJudd confided in her mom, singer Naomi Judd, at the time, who confirmed her daughter’s story to the NYT . \nJudd went on to star in two additional Weinstein-led films after the alleged incident. \nThe other women’s claims are similar to Judd’s experience, reports the NYT . McGowan reportedly reached a settlement with Weinstein after an encounter in a hotel room with the executive producer in 1997 during the Sundance Film Festival. Women fight on. And to the men out there, stand up. We need you as allies. #bebrave \n— rose mcgowan (@rosemcgowan) October 5, 2017 \nMcGowan starred in the 1996 film Scream , executive produced by Weinstein and his brother. Jeff Vespa/WireImage \nMcGowan declined to comment to the NYT . \nWeinstein employee Lauren O’Conner also backed the women’s allegations of inappropriate behavior, saying, “There is a toxic environment for women at this company,” in an office memo. \nThe Oscar-winning producer also reportedly reached a settlement with an Italian model after he was accused of sexual harassment in 2015. The woman claimed he asked her inappropriate questions about her body and groped her during a private meeting. Weinstein co-founded Miramax with his brother Bob in the 1970s. The studio became a prominent player in independent cinema with films including Pulp Fiction and Steven Soderbergh’s Sex, Lies, and Videotape . After Miramax was acquired by Disney in 2005, Weinstein and his brother went on to found the Weinstein Company. The Hollywood power player is known for his strong Academy Awards campaigns. The Weinstein Company’s films include Oscar winners and critically acclaimed hits such as The Artist , The King’s Speech , Silver Linings Playbook , Django Unchained and more. Weinstein is married to fashion designer Georgina Chapman, with whom he has two children. Show Full Article ",
+      "highlightText": "",
+      "highlightTitle": "",
+      "language": "english",
+      "external_links": [],
+      "entities": {
+        "persons": [],
+        "organizations": [],
+        "locations": []
+      },
+      "rating": "None",
+      "crawled": "2017-10-06T00:00:40.464+03:00"
+    }
+  ],
+  "totalResults": 1340,
+  "moreResultsAvailable": 1339,
+  "next": "/filterWebContent?token\u003dfa693d57-7072-4875-8fc1-553432f6d1d7\u0026format\u003djson\u0026ts\u003d1507227828704\u0026q\u003ddjango\u0026sort\u003drelevancy\u0026from\u003d1\u0026size\u003d1",
+  "requestsLeft": 986
+}

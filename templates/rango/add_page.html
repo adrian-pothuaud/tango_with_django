@@ -1,13 +1,12 @@
 {% extends 'rango/base.html' %}
 
 {% load staticfiles %}
+{% load bootstrap_toolkit %}
 
 {% block title %}Add a Page <small>to Category {{ category }}</small>{% endblock %}
 
 {% block links %}
-    <li><a href="{% url 'rango:index' %}">Home</a></li>
     <li><a href="{% url 'rango:show_category' category.slug %}">back to cat</a></li>
-    <li><a href="{% url 'rango:about' %}">About Rango</a></li>
 {% endblock %}
 
 {% block content %}
@@ -25,8 +24,8 @@
                 <p>{{ visible_field }}</p>
             {% endfor %}
         </div>
-        <div class="col-xs-12 text-center">
-            <input type="submit" name="submit" value="Create Page" />
+        <div class="col-xs-12">
+            <input class="btn btn-default" type="submit" name="submit" value="Create Page" />
         </div>
     </form>
 {% endblock %}
