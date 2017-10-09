@@ -18,10 +18,12 @@ class UserForm(models.ModelForm):
 
 class UserProfileForm(models.ModelForm):
     # attributes
+    website = forms.URLField(required=False)
+    picture = forms.ImageField(required=False)
 
     class Meta:
         model = UserProfile
-        fields = ('website', 'picture')
+        exclude = ('user', )
 
 
 class CategoryForm(models.ModelForm):

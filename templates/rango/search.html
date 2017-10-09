@@ -29,6 +29,12 @@
                             <h4 class="list-group-item-heading">
                                 <a href="{{ result.url }}">{{ result.title }}</a>
                             </h4>
+                            <p>{{ result.thread.site_full }}</p>
+                            {% if user.is_authenticated %}
+                                <button data-catid="{{category.id}}" data-title="{{ result.title }}"
+                                data-url="{{ result.link }}"
+                                class="rango-add btn btn-info btn-sm" type="button">Add</button>
+                            {% endif %}
                         </div>
                     {% endif %}
                 {% endfor %}

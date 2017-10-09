@@ -18,16 +18,60 @@
 
 {% block content %}
     {% if category %}
+        <div>
+            <strong id="like_count">{{ category.likes }}</strong> people like this category
+            {% if user.is_authenticated %}
+                <button id="likes" data-catid="{{category.id}}"
+                class="btn btn-primary btn-sm" type="button">
+                Like
+                </button>
+            {% endif %}
+        </div>
         {% if pages %}
             <h3>Pages <small>from {{ category.name }}</small></h3>
             <div class="col-xs-12"></div>
             <ul class="list-unstyled">
                 {% for page in pages %}
-                    <li><a href="{% url 'rango:goto' page.id %}">{{ page.title }}</a></li>
+                    <li>
+                        <a href="{% url 'rango:goto' page.id %}">{{ page.title }}</a>
+                        ({{ page.views }} view{{ page.views|pluralize:',s' }})
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}
             <strong>No pages currently in category.</strong>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <h3>Search for another page</h3>
+            <form class="form-inline" id="search_form" method="post" action="{% url 'rango:show_category' category.slug %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="text" size="50"  title="Query" name="query" id="query"
+                    {% if query %}
+                        value="{{ query }}"
+                    {% endif %}
+                    >
+                </div>
+                <button class="btn btn-primary" type="submit" name="submit" value="Search">Search</button>
+            </form>
+
+            <div>
+                {% if result_list %}
+                    <h3>Results</h3>
+                    <div class="list-group">
+                        {% for result in result_list %}
+                            {% if result.title %}
+                                <div class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <a href="{{ result.url }}">{{ result.title }}</a>
+                                    </h4>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
         {% endif %}
     {% else %}
         The specified category does not exist !

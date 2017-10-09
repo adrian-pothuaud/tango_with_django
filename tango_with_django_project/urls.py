@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import reverse
 
 from rango import views as rango_views, urls as rango_urls
 from registration.backends.simple.views import RegistrationView
@@ -25,9 +26,8 @@ from registration.backends.simple.views import RegistrationView
 # Create a new class that redirects the user to the index page,
 # if successful at logging
 class MyRegistrationView(RegistrationView):
-    @staticmethod
-    def get_success_url():
-        return '/rango/'
+    def get_success_url(self, **kwargs):
+        return reverse('register_profile')
 
 
 urlpatterns = [url(r'^$', rango_views.index, name='index'),
